@@ -36,17 +36,40 @@ def predict():
     user_input = ''.join(user_input)
     text_p.append(user_input)
     
+    # V1 - Error shape -------
     # Tokenizing and padding
-    user_input = tokenizer.texts_to_sequences(text_p)
-    user_input = np.array(user_input).reshape(-1)
-    user_input = pad_sequences([user_input], input_shape)
+    # user_input = tokenizer.texts_to_sequences(text_p)
+    # user_input = np.array(user_input).reshape(-1)
+    # user_input = pad_sequences([user_input], input_shape)
+    # End V1 ----
+    
+    # V2 - Working ----
+    # Tokenizing
+    sequences = tokenizer.texts_to_sequences(text_p)
+    
+    # Instead of reshaping and padding as before, we need to adjust to match (None, 3)
+    # If this is a sequence model and we need exactly 3 tokens
+    padded_sequences = pad_sequences(sequences, maxlen=3, padding='post', truncating='post')
+    # End V2 ----
+    
     
     # Log untuk debugging
-    print(f"Input shape after padding: {user_input.shape}")
+    print(f"\nInput shape after padding: {padded_sequences.shape}\n")
     
+    ## v1 original test ---- error ☠️ input shape
     # Getting prediction from model
     # output = model.predict(user_input)
-    output = model.predict()
+    # End v1 ----
+    
+    ## v2 original test ---- Working ✅ Correct Shape
+    # Getting prediction from model
+    output = model.predict(padded_sequences)
+    # End v2 ----
+    
+    ## dummy test --- Working ✅ Correct Shape
+    # dummy_input = np.random.random((1, 3))
+    # output = model.predict(dummy_input)
+    
     output = output.argmax()
     
     # Finding the right tag and response
