@@ -1,6 +1,6 @@
 # Model 1 - Menggunakan Flash
 - Text Prediction Classification. 
-- [API Postman](https://.postman.co/workspace/My-Workspace~9779896e-9ea0-40ca-8a08-35c00c022f9c/collection/35358448-7da7eb3b-12c3-4a5f-9b47-67af996bda1b?action=share&creator=35358448&active-environment=35358448-22648637-d5ff-4098-af33-774ba568b29d)
+- [API Postman](https://postman.co/workspace/My-Workspace~9779896e-9ea0-40ca-8a08-35c00c022f9c/collection/35358448-7da7eb3b-12c3-4a5f-9b47-67af996bda1b?action=share&creator=35358448&active-environment=35358448-22648637-d5ff-4098-af33-774ba568b29d)
 
 ## Log Server Flask:
 Error Shape Prediction
